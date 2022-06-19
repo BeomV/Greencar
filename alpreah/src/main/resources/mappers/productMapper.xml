@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.alpreah.mappers.productMapper">
+
+	
+	<insert id='insertProduct'>
+	
+		INSERT INTO carinfo
+		(carbrand, carname, fueltype, cartrim,distance,car_no,carwash,addressvalue,address_detail)
+		
+		VALUES
+		(#{carbrand},#{carname},#{fueltype},#{cartrim},#{distance},#{car_no},#{carwash},#{addressvalue},#{address_detail})
+		
+	</insert>
+
+	<select id='list' resultType="org.alpreah.domain.ProductVO">
+		SELECT * FROM carinfo
+	</select>
+	
+	<select id='goodsView' resultType="org.alpreah.domain.ProductVO">
+		SELECT * FROM carinfo where no = #{no}
+	</select>
+	
+	<update id='goodsmodify'>
+		UPDATE
+			carinfo
+		SET
+			carbrand = #{carbrand},
+			carname = #{carname},
+			fueltype = #{fueltype},
+			cartrim = #{cartrim},
+			distance = #{distance},
+			car_no = #{car_no},
+			carwash = #{carwash},
+			addressvalue = #{addressvalue},
+			address_detail = #{address_detail}
+			 
+		WHERE
+			no = #{no}
+	
+	</update>
+	
+	<delete id="goodsdelete">
+		DELETE
+		 from carinfo
+		WHERE no = #{no}
+	
+	</delete>
+	
+		<select id='userlist' resultType="org.alpreah.domain.member">
+		select * from member
+	</select>
+	
+</mapper>
